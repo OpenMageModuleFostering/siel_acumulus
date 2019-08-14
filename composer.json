@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Siel_Acumulus",
+    "type": "magento-module",
+    "license": "GNU-v3",
+    "homepage": "",
+    "description": "This addon connects your Magento store to the Dutch SIEL Acumulus online financial administration application.",
+    "authors": [
+    {
+        "name": "SIEL Acumulus",
+        "email": "erwin@burorader.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

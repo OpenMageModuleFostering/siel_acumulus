@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Siel_Acumulus>
+      <version>4.3.0</version>
+    </Siel_Acumulus>
+  </modules>
+
+  <stores>
+    <admin>
+      <dev>
+        <debug>
+          <template_hints>0</template_hints>
+          <template_hints_blocks>0</template_hints_blocks>
+        </debug>
+      </dev>
+    </admin>
+  </stores>
+
+  <global>
+    <models>
+      <acumulus>
+        <class>Siel_Acumulus_Model</class>
+        <resourceModel>acumulus_resource</resourceModel>
+      </acumulus>
+      <acumulus_resource>
+        <class>Siel_Acumulus_Model_Resource</class>
+        <entities>
+          <entry>
+            <table>acumulus_entries</table>
+          </entry>
+        </entities>
+      </acumulus_resource>
+    </models>
+
+    <resources>
+      <acumulus_setup>
+        <setup>
+          <module>Siel_Acumulus</module>
+          <class>Siel_Acumulus_Model_Resource_Setup</class>
+        </setup>
+      </acumulus_setup>
+    </resources>
+
+    <blocks>
+      <acumulus>
+        <class>Siel_Acumulus_Block</class>
+      </acumulus>
+    </blocks>
+
+    <helpers>
+      <acumulus>
+        <class>Siel_Acumulus_Helper</class>
+      </acumulus>
+    </helpers>
+
+    <events>
+      <sales_order_save_after>
+        <observers>
+          <Siel_Acumulus_order_observer>
+            <type>singleton</type>
+            <class>acumulus/order_observer</class>
+            <method>orderSaveAfter</method>
+          </Siel_Acumulus_order_observer>
+        </observers>
+      </sales_order_save_after>
+
+      <sales_order_invoice_save_after>
+        <observers>
+          <Siel_Acumulus_order_observer>
+            <type>singleton</type>
+            <class>acumulus/order_observer</class>
+            <method>invoiceSaveAfter</method>
+          </Siel_Acumulus_order_observer>
+        </observers>
+      </sales_order_invoice_save_after>
+
+      <sales_order_creditmemo_save_after>
+        <observers>
+          <Siel_Acumulus_order_observer>
+            <type>singleton</type>
+            <class>acumulus/order_observer</class>
+            <method>creditMemoSaveAfter</method>
+          </Siel_Acumulus_order_observer>
+        </observers>
+      </sales_order_creditmemo_save_after>
+    </events>
+  </global>
+
+  <admin>
+    <routers>
+      <adminhtml>
+        <args>
+          <modules>
+            <acumulus before="Mage_Adminhtml">Siel_Acumulus_Adminhtml</acumulus>
+          </modules>
+        </args>
+      </adminhtml>
+    </routers>
+  </admin>
+
+</config>
